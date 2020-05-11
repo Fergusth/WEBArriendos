@@ -5,6 +5,8 @@
  */
 package DTO;
 
+import WS.ArrayOfUsuario;
+
 /**
  *
  * @author Gerald
@@ -109,5 +111,7 @@ public class UsuarioDTO {
     public void setFRECUENTE(String FRECUENTE) {
         this.FRECUENTE = FRECUENTE;
     }
+
+    
     
 }

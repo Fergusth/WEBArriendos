@@ -3,8 +3,8 @@
   <services/>
   <clients>
     <client name="ServicioTR">
-      <wsdl-url>http://d1b68dab.ngrok.io/ServicioTR.svc?wsdl</wsdl-url>
-      <local-wsdl-file>d1b68dab.ngrok.io/ServicioTR.svc.wsdl</local-wsdl-file>
+      <wsdl-url>http://localhost:50885/ServicioTR.svc?wsdl</wsdl-url>
+      <local-wsdl-file>localhost_50885/ServicioTR.svc.wsdl</local-wsdl-file>
       <package-name forceReplace="true">WS</package-name>
       <catalog-file>catalog.xml</catalog-file>
       <wsimport-options>
