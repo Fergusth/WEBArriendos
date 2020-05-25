@@ -11,10 +11,10 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-        <link href="css/estilos.css" rel="stylesheet" type="text/css"/>
+        <link href="JSP-Pages/Extras/css/estilos.css" rel="stylesheet" type="text/css"/>
         <style>
             body {
-                background-image: url("Imagenes/body.jpeg");
+                background-image: url("img/core-img/body.jpeg");
                 background-repeat: no-repeat;
                 background-size: cover;
             }
@@ -28,7 +28,7 @@
         <div class="container container-login col-lg-3">
             <form action="<c:url value="/UsuarioController"/>" method="POST">
                 <div class="form-group text-center">
-                    <img src="<c:url value="Imagenes/logo.png"/>" height="80" width="80"/>
+                    <img src="<c:url value="img/core-img/LogoTurismo.png"/>" height="200" width="200"/>
                     <p><strong>¡Bienvenido a Turismo Real!</strong></p>
                     
                 </div>

@@ -39,7 +39,17 @@ public class UsuarioController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("index.jsp").forward(request, response);
+        //request.getRequestDispatcher("index.jsp").forward(request, response);
+        HttpSession Session = request.getSession(true);
+        if (Session.getAttribute("cliente") != null){
+            UsuarioDTO usudto = (UsuarioDTO) Session.getAttribute("cliente");
+           /* if (usudto.getROL() == 1){
+                response.
+            }
+            */
+        } else{
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
     }
 
     /**
@@ -83,7 +93,7 @@ public class UsuarioController extends HttpServlet {
                     );
                     session.setAttribute("cliente", usuario);
                     
-                    request.getRequestDispatcher("JSP-Pages/welcome.jsp").forward(request, response);
+                    request.getRequestDispatcher("Inicio.jsp").forward(request, response);
                 }
             }
             

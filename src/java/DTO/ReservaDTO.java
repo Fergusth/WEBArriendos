@@ -25,6 +25,18 @@ public class ReservaDTO {
     public ReservaDTO() {
     }
 
+    public ReservaDTO(int ID_RESERVA, Date FECHA_CHECKIN, Date FECHA_CHECKOUT, String HORA_CHECKIN, String USUARIO_DNI, int PRECIO_TOTAL, int TOTAL_PAGADO, String FORMA_PAGO) {
+        this.ID_RESERVA = ID_RESERVA;
+        this.FECHA_CHECKIN = FECHA_CHECKIN;
+        this.FECHA_CHECKOUT = FECHA_CHECKOUT;
+        this.HORA_CHECKIN = HORA_CHECKIN;
+        this.USUARIO_DNI = USUARIO_DNI;
+        this.PRECIO_TOTAL = PRECIO_TOTAL;
+        this.TOTAL_PAGADO = TOTAL_PAGADO;
+        this.FORMA_PAGO = FORMA_PAGO;
+    }
+    
+
     public int getID_RESERVA() {
         return ID_RESERVA;
     }
