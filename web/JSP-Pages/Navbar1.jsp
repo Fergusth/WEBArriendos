@@ -30,12 +30,6 @@
 </head>
 
 <body>
-    <!-- Preloader -->
-    <div id="preloader">
-        <div class="loader"></div>
-    </div>
-    <!-- /Preloader -->
-
     <!-- Header Area Start -->
     <header class="header-area">
         <!-- Search Form -->

@@ -5,4 +5,5 @@
     <system systemId="http://localhost:50885/ServicioTR.svc?xsd=xsd1" uri="wsdl/localhost_50885/ServicioTR.svc.xsd_xsd1.xsd"/>
     <system systemId="http://localhost:50885/ServicioTR.svc?xsd=xsd2" uri="wsdl/localhost_50885/ServicioTR.svc.xsd_xsd2.xsd"/>
     <system systemId="http://d1b68dab.ngrok.io/ServicioTR.svc?wsdl" uri="wsdl/d1b68dab.ngrok.io/ServicioTR.svc.wsdl"/>
+    <system systemId="http://localhost:50885/ServicioTR.svc?xsd=xsd3" uri="wsdl/localhost_50885/ServicioTR.svc.xsd_xsd3.xsd"/>
 </catalog>
