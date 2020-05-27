@@ -47,25 +47,30 @@
                     <button type="submit" class="btn btn-info" name="btnPago" style="margin-bottom: 32px;">Pagar seleccionadas</button>
                 </form>
             </c:if>
-            <h3>Todas mis multas</h3>
-            <table class="table table-bordered">
-                <thead>
-                    <th>ID Multa</th>
-                    <th>Descripción</th>
-                    <th>Precio (Pesos)</th>
-                    <th>¿Pagado?</th>
-                </thead>
-                <tbody>
-                    <c:forEach items="${lstMultas}" var="multa">
-                        <tr>
-                            <td>${multa.ID_MULTA}</td>
-                            <td>${multa.DESCRIPCION}</td>
-                            <td>$${multa.TOTAL_MULTA}</td>
-                            <td>${multa.PAGADO}</td>
-                        </tr>
-                    </c:forEach>
-                </tbody>
-            </table>
+            <c:if test="${tieneMultas == true}">
+                <h3>Todas mis multas</h3>
+                <table class="table table-bordered">
+                    <thead>
+                        <th>ID Multa</th>
+                        <th>Descripción</th>
+                        <th>Precio (Pesos)</th>
+                        <th>¿Pagado?</th>
+                    </thead>
+                    <tbody>
+                        <c:forEach items="${lstMultas}" var="multa">
+                            <tr>
+                                <td>${multa.ID_MULTA}</td>
+                                <td>${multa.DESCRIPCION}</td>
+                                <td>$${multa.TOTAL_MULTA}</td>
+                                <td>${multa.PAGADO}</td>
+                            </tr>
+                        </c:forEach>
+                    </tbody>
+                </table>
+            </c:if>
+            <c:if test="${tieneMultas == false}">
+                <center><h3>No tienes multas en tu historial</h3></center>
+            </c:if>
         </div>
     </body>
 </html>
