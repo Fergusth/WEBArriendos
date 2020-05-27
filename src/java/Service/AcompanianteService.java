@@ -5,6 +5,8 @@
  */
 package Service;
 
+import WS.ArrayOfAcompaniante;
+
 /**
  *
  * @author Oskardashh
@@ -15,6 +17,12 @@ public class AcompanianteService {
         WS.ServicioTR service = new WS.ServicioTR();
         WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
         return port.crearAcompaniante(dNI, nOMBRECOMPLETO, eXTRANJERO, cORREO, tELEFONO);
+    }
+
+    public static ArrayOfAcompaniante listarAcompaniatesReserva(java.lang.Integer idReserva) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.listarAcompaniatesReserva(idReserva);
     }
     
     

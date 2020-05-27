@@ -69,7 +69,19 @@ public class ConfirmacionMultaController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+        String parametro = request.getParameter("token");
+        HttpSession Session = request.getSession(true);
+        UsuarioDTO usudto = (UsuarioDTO) Session.getAttribute("cliente");
+        MultaDTO multa = new MultaDTO();
+        List<MultaDTO> bd_multas = multa.ListarMultasImpagasUsuario(usudto.getDNI());
+        for (String id : parametro.split(";")) {
+            for (MultaDTO bd_multa : bd_multas) {
+                if (Integer.parseInt(desencriptar(id)) == bd_multa.getID_MULTA()){
+                    multa.pagarMulta(bd_multa.getID_MULTA(), bd_multa.getTOTAL_MULTA());
+                }
+            }
+        }
+        request.getRequestDispatcher("JSP-Pages/Multas/PagoConfirmado.jsp").forward(request, response);
     }
 
     /**

@@ -36,7 +36,8 @@ public class MultaController extends HttpServlet {
         if (Session.getAttribute("cliente") != null){
             UsuarioDTO usudto = (UsuarioDTO) Session.getAttribute("cliente");
             MultaDTO multa = new MultaDTO();
-            request.setAttribute("tieneMultasImpagas", multa.tieneMulta(usudto.getDNI()));
+            request.setAttribute("tieneMultasImpagas", multa.tieneMultaImpagas(usudto.getDNI()));
+            request.setAttribute("tieneMultas", multa.tieneMulta(usudto.getDNI()));
             request.setAttribute("lstMultasImpagas", multa.ListarMultasImpagasUsuario(usudto.getDNI()));
             request.setAttribute("lstMultas", multa.ListarMultasUsuario(usudto.getDNI()));
             request.getRequestDispatcher("JSP-Pages/Multas/ListarMultas.jsp").forward(request, response);

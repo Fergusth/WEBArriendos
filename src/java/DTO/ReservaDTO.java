@@ -5,7 +5,15 @@
  */
 package DTO;
 
+import Service.ReservaService;
+import WS.Reserva;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.GregorianCalendar;
+import java.util.List;
+import javax.xml.datatype.DatatypeConfigurationException;
+import javax.xml.datatype.DatatypeFactory;
+import javax.xml.datatype.XMLGregorianCalendar;
 
 /**
  *
@@ -17,7 +25,17 @@ public class ReservaDTO {
     public Date FECHA_CHECKIN;
     public Date FECHA_CHECKOUT;
     public String HORA_CHECKIN;
+    public String HORA_CHECKOUT;
     public String USUARIO_DNI;
+    public String ESTADO;
+
+    public String getESTADO() {
+        return ESTADO;
+    }
+
+    public void setESTADO(String ESTADO) {
+        this.ESTADO = ESTADO;
+    }
     public int PRECIO_TOTAL;
     public int TOTAL_PAGADO;
     public String FORMA_PAGO;
@@ -25,11 +43,20 @@ public class ReservaDTO {
     public ReservaDTO() {
     }
 
-    public ReservaDTO(int ID_RESERVA, Date FECHA_CHECKIN, Date FECHA_CHECKOUT, String HORA_CHECKIN, String USUARIO_DNI, int PRECIO_TOTAL, int TOTAL_PAGADO, String FORMA_PAGO) {
+    public String getHORA_CHECKOUT() {
+        return HORA_CHECKOUT;
+    }
+
+    public void setHORA_CHECKOUT(String HORA_CHECKOUT) {
+        this.HORA_CHECKOUT = HORA_CHECKOUT;
+    }
+
+    public ReservaDTO(int ID_RESERVA, Date FECHA_CHECKIN, Date FECHA_CHECKOUT, String HORA_CHECKIN, String HORA_CHECKOUT, String USUARIO_DNI, int PRECIO_TOTAL, int TOTAL_PAGADO, String FORMA_PAGO) {
         this.ID_RESERVA = ID_RESERVA;
         this.FECHA_CHECKIN = FECHA_CHECKIN;
         this.FECHA_CHECKOUT = FECHA_CHECKOUT;
         this.HORA_CHECKIN = HORA_CHECKIN;
+        this.HORA_CHECKOUT = HORA_CHECKOUT;
         this.USUARIO_DNI = USUARIO_DNI;
         this.PRECIO_TOTAL = PRECIO_TOTAL;
         this.TOTAL_PAGADO = TOTAL_PAGADO;
@@ -101,7 +128,53 @@ public class ReservaDTO {
         this.FORMA_PAGO = FORMA_PAGO;
     }
     
+    public ArrayList<ReservaDTO> listarTodasReservasUsuario(String dni) {
+        List<Reserva> bdreservas = ReservaService.listarReservasUsuario(dni).getReserva();
+        ArrayList<ReservaDTO> reservas = new ArrayList<>();
+        for (Reserva reserva : bdreservas) {
+            ReservaDTO r = new ReservaDTO();
+            r.setFECHA_CHECKIN(reserva.getFECHACHECKIN().toGregorianCalendar().getTime());
+            r.setFECHA_CHECKOUT(reserva.getFECHACHECKOUT().toGregorianCalendar().getTime());
+            r.setFORMA_PAGO(reserva.getFORMAPAGO().getValue());
+            r.setHORA_CHECKIN(reserva.getHORACHECKIN().getValue());
+            r.setID_RESERVA(reserva.getIDRESERVA());
+            r.setPRECIO_TOTAL(reserva.getPRECIOTOTAL());
+            r.setTOTAL_PAGADO(reserva.getTOTALPAGADO());
+            r.setUSUARIO_DNI(reserva.getUSUARIODNI().getValue());
+            r.setHORA_CHECKOUT(reserva.getHORACHECKOUT().getValue());
+            r.setESTADO(reserva.getESTADO().getValue());
+            reservas.add(r);
+        }
+        return reservas;
+    }
     
+    public ArrayList<ReservaDTO> listarReservasUsuarioEstado(String dni, String estado) {
+        List<Reserva> bdreservas = ReservaService.listarReservasUsuarioEstado(dni, estado).getReserva();
+        ArrayList<ReservaDTO> reservas = new ArrayList<>();
+        for (Reserva reserva : bdreservas) {
+            ReservaDTO r = new ReservaDTO();
+            r.setFECHA_CHECKIN(reserva.getFECHACHECKIN().toGregorianCalendar().getTime());
+            r.setFECHA_CHECKOUT(reserva.getFECHACHECKOUT().toGregorianCalendar().getTime());
+            r.setFORMA_PAGO(reserva.getFORMAPAGO().getValue());
+            r.setHORA_CHECKIN(reserva.getHORACHECKIN().getValue());
+            r.setID_RESERVA(reserva.getIDRESERVA());
+            r.setPRECIO_TOTAL(reserva.getPRECIOTOTAL());
+            r.setTOTAL_PAGADO(reserva.getTOTALPAGADO());
+            r.setUSUARIO_DNI(reserva.getUSUARIODNI().getValue());
+            r.setHORA_CHECKOUT(reserva.getHORACHECKOUT().getValue());
+            r.setESTADO(reserva.getESTADO().getValue());
+            reservas.add(r);
+        }
+        return reservas;
+    }
     
+    private static XMLGregorianCalendar getXmlGregorianCalendarFromDate(final Date date) throws DatatypeConfigurationException {
+        GregorianCalendar calendar = new GregorianCalendar();
+
+        calendar.setTime(date);
+
+        return DatatypeFactory.newInstance().newXMLGregorianCalendar(calendar);
+
+    }
     
 }

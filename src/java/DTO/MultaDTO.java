@@ -114,8 +114,12 @@ public class MultaDTO {
         return multas;
     }
     
-    public boolean tieneMulta(String dni){
+    public boolean tieneMultaImpagas(String dni){
         return ListarMultasImpagasUsuario(dni).size() > 0;
+    }
+    
+    public boolean tieneMulta(String dni){
+        return ListarMultasUsuario(dni).size() > 0;
     }
     
     public boolean pagarMulta(int multa_id, int pago) {

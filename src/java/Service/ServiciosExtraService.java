@@ -18,6 +18,12 @@ public class ServiciosExtraService {
         WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
         return port.listarServiciosExtra();
     }
+
+    public static ArrayOfServicioExtra listarServicioExtraReserva(java.lang.Integer idReserva) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.listarServicioExtraReserva(idReserva);
+    }
     
     
     
