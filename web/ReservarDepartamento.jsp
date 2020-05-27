@@ -25,7 +25,7 @@
 
         <!-- Stylesheet -->
         <link rel="stylesheet" href="style.css">
-        
+
 
 
     </head>
@@ -148,184 +148,311 @@
         <!-- Breadcrumb Area End -->
 
 
-
-        <form method="post" action="<c:url value="/ReservaController"/>">
-
-
-            <div class="container">
-                <div class="row">
-                    <div class="col-12 col-lg-8">
+        <div class="container">
 
 
-                        <!-- <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-                             <div class="row">-->
-                        <!--<h2>Reservar el Departamento:</h2>-->
-                        <div class="item">
-                            <div class="block-34">
+            <div class="py-5 text-center">
+                <hr>
+            </div>
 
-                                <div class="text">
-                                    <h2 class="Direccion">${direccion}</h2>
-                                    <div class="precio"><sup>$</sup><span class="number">${precioDiario}</span><sub>/por día</sub></div>
-                                    <ul class="specs">
-                                        <li><strong>Habitaciones:</strong>${cantHabit}</li>
-                                        <li><strong>Baños:</strong> ${cantBanios}</li>
-                                        <li><strong>Descripción:</strong>${descripcion}</li>
-                                        <li><strong>DIRECCION: </strong>${direccion}</li>
+            <div class="row">
+                <div class="col-md-4 order-md-2 mb-4">
+                    <h4 class="d-flex justify-content-between align-items-center mb-3">
+                        <span class="text-muted">Servicios Extra</span>
+                    </h4>
 
-                                    </ul>
+
+                    <div class="panel panel-default">
+                        <!--<div class="panel-heading">Servicios</div>-->
+                        <div class="panel-body">
+
+
+                            <form method="post" action="<c:url value="/ReservaController"/>">
+
+                                <div class="input-group col-md-6">
+                                    <select name="servicios" id="Servicios" class="form-control">
+                                        <c:forEach var="Servi" items="${ServiceExt}">
+                                            <option value="${Servi.ID}">${Servi.NOMBRE_SERVICIO}</option>
+                                        </c:forEach>
+                                    </select>
+                                </div>
+                                <div class="col-md-12">
+
+                                </div>
+                                <div class="input-group col-md-6">
+                                    <input type="submit" name="agregarServicio" class="btn btn-danger btn-md" value="Añadir Servicio" id="btn-chat">
+                                </div>
+                        </div>
+                    </div>
+
+
+
+
+
+                </div>
+
+
+
+                <!-- DATOS DE LA REVERSA: -->
+                <div class="col-md-8 order-md-1">
+                    <h4 class="mb-3">Datos Reserva: </h4>
+                    <form class="needs-validation" novalidate>
+                        <div class="row">
+
+                            <div class="col-md-6 mb-3">
+                                <label for="address">Dirección:</label>
+                                <input disabled="true" value="${direccion}" type="text" class="form-control" id="address" required>
+                            </div>
+
+                            <li class="col-md-6 mb-3">
+                                <label>Precio Diario: </label>
+                                <input disabled="true" value="${precioDiario}" type="text" class="form-control" id="address" required>
+                            </li>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="firstName">Dormitorios:</label>
+                                <input disabled="true" type="text" class="form-control" id="firstName" placeholder="" value="${cantHabit}" required>
+                            </div>
+
+                            <div class="col-md-6 mb-3">
+                                <label for="lastName">Baños:</label>
+                                <input disabled="true" type="text" class="form-control" id="lastName" placeholder="" value="${cantBanios}" required>
+                            </div>
+                        </div>
+
+                        <div class="mb-3">
+                            <label for="username">Descripción:</label>
+                            <div class="input-group">
+
+                                <input disabled="true" type="text" class="form-control" id="username" value="${descripcion}" placeholder="Username" required>
+                                
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <label for="checkin">Check-In:</label>
+                                <div class="field-icon-wrap">
+                                    <div class="icon"><span class="icon-calendar"></span></div>
+                                    <input disabled="true" value="${fechaDesde}" name="fechaDesde" type="date" pattern="yyyy-MM-dd" id="checkin_date" class="form-control">
+                                </div>
+
+                            </div>
+                            <div class="col-md-6">
+                                <label for="checkin">Check-Out:</label>
+                                <div class="field-icon-wrap">
+                                    <div class="icon"><span class="icon-calendar"></span></div>
+                                    <input disabled="true" value="${fechaHasta}" name="fechaHasta" pattern="yyyy-MM-dd" type="date" id="checkout_date" class="form-control">
                                 </div>
                             </div>
-                        </div>
 
-                        <input type="hidden" name="iddepto" value="${ID}"/>
-                        <input type="hidden" name="direccion" value="${depart.Direccion}"/>
-                        <input type="hidden" name="precio" value="${PRECIO_DIARIO}"/>
-                        <input type="hidden" name="cantidaddormitorios" value="${CANT_DORMITORIOS}"/>
-                        <input type="hidden" name="cantidadbanios" value="${CANT_BANIOS}"/>
-                        <input type="hidden" name="descripcion" value="${DESCRIPCION}"/>
-                        <input type="hidden" name="totalPagado" value="${totalPagado}"/>
-
-                        <input value="${fechaDesde}" name="fechaDesde" type="hidden" pattern="yyyy-MM-dd"/>
-                        <input value="${fechaHasta}" name="fechaHasta" type="hidden" pattern="yyyy-MM-dd"/>
-                        <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-                            <label for="checkin">Check-In</label>
-                            <div class="field-icon-wrap">
-                                <div class="icon"><span class="icon-calendar"></span></div>
-                                <input disabled="true" value="${fechaDesde}" name="fechaDesde" type="date" pattern="yyyy-MM-dd" id="checkin_date" class="form-control">
-                            </div>
 
                         </div>
-                        <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-                            <label for="checkin">Check-Out:</label>
-                            <div class="field-icon-wrap">
-                                <div class="icon"><span class="icon-calendar"></span></div>
-                                <input disabled="true" value="${fechaHasta}" name="fechaHasta" pattern="yyyy-MM-dd" type="date" id="checkout_date" class="form-control">
+
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h1>Precio Total:</h1>
+                                <h1>$ <c:out value="${total}"/></h1>  
                             </div>
                         </div>
-                        <h1>Precio total:</h1>
-                        <h2>$ <c:out value="${total}"/></h2>
-                        <div class="col-md-8">
-                            <div class="panel panel-default">
-                                <div class="panel-heading">Servicios</div>
-                                <div class="panel-body">
-                                    <form method="post" action="<c:url value="/ReservaController"/>">
-                                        <h4>Ingresar servicios</h4>
-                                        <div class="input-group col-md-2">
-                                            <select name="servicios" id="Servicios" class="form-control">
-                                                <c:forEach var="Servi" items="${ServiceExt}">
-                                                    <option value="${Servi.ID}">${Servi.NOMBRE_SERVICIO}</option>
-                                                </c:forEach>
-                                            </select>
-                                        </div>
-                                        <div class="col-md-12">
 
-                                        </div>
-                                        <input type="submit" name="reservaPago" class="btn btn-danger btn-md" value="Pagar Reserva" id="btn-chat">
 
-                                        </div>
-                                        </div>
-                                        </div>
 
-                                        </div>
-                                        </div>
+                        <hr class="mb-4">
+                        <!--<input type="submit" name="reservaPago" class="btn btn-danger btn-md" value="Pagar Reserva" id="btn-chat">-->
+
+                        <button class="btn btn-primary btn-lg btn-block" type="submit" name="reservaPago">Pagar Reserva</button>
+                        <hr class="mb-4">
+
+                    </form>
+                </div>
             </div>
-                                        
-                                    </form>
-
-                                    <!-- Footer Area Start -->
-                                    <footer class="footer-area section-padding-80-0">
-                                        <!-- Main Footer Area -->
-                                        <div class="main-footer-area">
-                                            <div class="container">
-                                                <div class="row align-items-baseline justify-content-between">
-                                                    <!-- Single Footer Widget Area -->
-                                                    <div class="col-12 col-sm-6 col-lg-3">
-                                                        <div class="single-footer-widget mb-80">
-                                                            <!-- Footer Logo -->
-                                                            <a href="#" class="footer-logo"><img src="img/core-img/LogoTurismo1.png" alt=""></a>
-
-                                                            <h4>+12 345-678-9999</h4>
-                                                            <span>turismoreal@gmail.com</span>
-                                                            <span>856 Paicaví, Concepción.</span>
-                                                        </div>
-                                                    </div>
+        </div>
 
 
+        <!--
+                    <form method="post" action="<c:url value="/ReservaController"/>">
+        
+        
+        <!--
+        <div class="row">
+            <div class="col-12 col-lg-8">
 
-                                                    <!-- Single Footer Widget Area -->
-                                                    <div class="col-12 col-sm-4 col-lg-2">
-                                                        <div class="single-footer-widget mb-80">
-                                                            <!-- Widget Title -->
-                                                            <h5 class="widget-title">Links</h5>
+        -->
+        <!-- <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
+             <div class="row">-->
+        <!--<h2>Reservar el Departamento:</h2>-->
+        <!--
+        <div class="item">
+            <div class="block-34">
 
-                                                            <!-- Footer Nav -->
-                                                            <ul class="footer-nav">
-                                                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Departamentos</a></li>
-                                                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Nosotros</a></li>
-                                                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Multas</a></li>
-                                                                <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Contacto</a></li>
-                                                            </ul>
-                                                        </div>
-                                                    </div>
+                <div class="text">
+                    <h2 class="Direccion">${direccion}</h2>
+                    <div class="precio"><sup>$</sup><span class="number">${precioDiario}</span><sub>/por día</sub></div>
+                    <ul class="specs">
+                        <li><strong>Habitaciones:</strong>${cantHabit}</li>
+                        <li><strong>Baños:</strong> ${cantBanios}</li>
+                        <li><strong>Descripción:</strong>${descripcion}</li>
+                        <li><strong>DIRECCION: </strong>${direccion}</li>
 
-                                                    <!-- Single Footer Widget Area -->
-                                                    <div class="col-12 col-sm-8 col-lg-4">
-                                                        <div class="single-footer-widget mb-80">
-                                                            <!-- Widget Title -->
-                                                            <h5 class="widget-title">Subscribete </h5>
-                                                            <span>Subscribete para más información.</span>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        -->
+        <input type="hidden" name="iddepto" value="${ID}"/>
+        <input type="hidden" name="direccion" value="${depart.Direccion}"/>
+        <input type="hidden" name="precio" value="${PRECIO_DIARIO}"/>
+        <input type="hidden" name="cantidaddormitorios" value="${CANT_DORMITORIOS}"/>
+        <input type="hidden" name="cantidadbanios" value="${CANT_BANIOS}"/>
+        <input type="hidden" name="descripcion" value="${DESCRIPCION}"/>
+        <input type="hidden" name="totalPagado" value="${totalPagado}"/>
 
-                                                            <!-- Newsletter Form -->
-                                                            <form action="index.html" class="nl-form">
-                                                                <input type="email" class="form-control" placeholder="Ingresa tu Email...">
-                                                                <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                                                            </form>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
+        <input value="${fechaDesde}" name="fechaDesde" type="hidden" pattern="yyyy-MM-dd"/>
+        <input value="${fechaHasta}" name="fechaHasta" type="hidden" pattern="yyyy-MM-dd"/>
+        <!--<div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
+            <label for="checkin">Check-In</label>
+            <div class="field-icon-wrap">
+                <div class="icon"><span class="icon-calendar"></span></div>
+                <input disabled="true" value="${fechaDesde}" name="fechaDesde" type="date" pattern="yyyy-MM-dd" id="checkin_date" class="form-control">
+            </div>
 
-                                        <!-- Copywrite Area -->
-                                        <div class="container">
-                                            <div class="copywrite-content">
-                                                <div class="row align-items-center">
-                                                    <div class="col-12 col-md-8">
-                                                        <!-- Copywrite Text -->
-                                                        <div class="copywrite-text">
-                                                            <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank"></a>
-                                                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-12 col-md-4">
-                                                        <!-- Social Info -->
-                                                        <div class="social-info">
-                                                            <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                                            <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                                            <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                                            <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </footer>
-                                    <!-- Footer Area End -->
+        </div>
+        <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
+            <label for="checkin">Check-Out:</label>
+            <div class="field-icon-wrap">
+                <div class="icon"><span class="icon-calendar"></span></div>
+                <input disabled="true" value="${fechaHasta}" name="fechaHasta" pattern="yyyy-MM-dd" type="date" id="checkout_date" class="form-control">
+            </div>
+        </div>
+        <h1>Precio total:</h1>
+        <h2>$ <c:out value="${total}"/></h2>
+        
+        -->
+        <!--
+        <div class="col-md-8">
+            <div class="panel panel-default">
+                <div class="panel-heading">Servicios</div>
+                <div class="panel-body">
+                    <form method="post" action="<c:url value="/ReservaController"/>">
+                        <h4>Ingresar servicios</h4>
+                        <div class="input-group col-md-2">
+                            <select name="servicios" id="Servicios" class="form-control">
+        <c:forEach var="Servi" items="${ServiceExt}">
+            <option value="${Servi.ID}">${Servi.NOMBRE_SERVICIO}</option>
+        </c:forEach>
+    </select>
+</div>
+<div class="col-md-12">
 
-                                    <!-- **** All JS Files ***** -->
-                                    <!-- jQuery 2.2.4 -->
-                                    <script src="js/jquery.min.js"></script>
-                                    <!-- Popper -->
-                                    <script src="js/popper.min.js"></script>
-                                    <!-- Bootstrap -->
-                                    <script src="js/bootstrap.min.js"></script>
-                                    <!-- All Plugins -->
-                                    <script src="js/roberto.bundle.js"></script>
-                                    <!-- Active -->
-                                    <script src="js/default-assets/active.js"></script>
+</div>
+<input type="submit" name="reservaPago" class="btn btn-danger btn-md" value="Pagar Reserva" id="btn-chat">
+
+</div>
+</div>
+</div>
+
+</div>
+</div>
+</div>
+
+</form>
+        -->
+
+        <!-- Footer Area Start -->
+        <footer class="footer-area section-padding-80-0">
+            <!-- Main Footer Area -->
+            <div class="main-footer-area">
+                <div class="container">
+                    <div class="row align-items-baseline justify-content-between">
+                        <!-- Single Footer Widget Area -->
+                        <div class="col-12 col-sm-6 col-lg-3">
+                            <div class="single-footer-widget mb-80">
+                                <!-- Footer Logo -->
+                                <a href="#" class="footer-logo"><img src="img/core-img/LogoTurismo1.png" alt=""></a>
+
+                                <h4>+12 345-678-9999</h4>
+                                <span>turismoreal@gmail.com</span>
+                                <span>856 Paicaví, Concepción.</span>
+                            </div>
+                        </div>
 
 
 
-                                    </body>
-                                    </html>
+                        <!-- Single Footer Widget Area -->
+                        <div class="col-12 col-sm-4 col-lg-2">
+                            <div class="single-footer-widget mb-80">
+                                <!-- Widget Title -->
+                                <h5 class="widget-title">Links</h5>
+
+                                <!-- Footer Nav -->
+                                <ul class="footer-nav">
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Departamentos</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Nosotros</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Multas</a></li>
+                                    <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Contacto</a></li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- Single Footer Widget Area -->
+                        <div class="col-12 col-sm-8 col-lg-4">
+                            <div class="single-footer-widget mb-80">
+                                <!-- Widget Title -->
+                                <h5 class="widget-title">Subscribete </h5>
+                                <span>Subscribete para más información.</span>
+
+                                <!-- Newsletter Form -->
+                                <form action="index.html" class="nl-form">
+                                    <input type="email" class="form-control" placeholder="Ingresa tu Email...">
+                                    <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Copywrite Area -->
+            <div class="container">
+                <div class="copywrite-content">
+                    <div class="row align-items-center">
+                        <div class="col-12 col-md-8">
+                            <!-- Copywrite Text -->
+                            <div class="copywrite-text">
+                                <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                    Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank"></a>
+                                    <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                            </div>
+                        </div>
+                        <div class="col-12 col-md-4">
+                            <!-- Social Info -->
+                            <div class="social-info">
+                                <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+        <!-- Footer Area End -->
+
+        <!-- **** All JS Files ***** -->
+        <!-- jQuery 2.2.4 -->
+        <script src="js/jquery.min.js"></script>
+        <!-- Popper -->
+        <script src="js/popper.min.js"></script>
+        <!-- Bootstrap -->
+        <script src="js/bootstrap.min.js"></script>
+        <!-- All Plugins -->
+        <script src="js/roberto.bundle.js"></script>
+        <!-- Active -->
+        <script src="js/default-assets/active.js"></script>
+
+
+
+    </body>
+</html>

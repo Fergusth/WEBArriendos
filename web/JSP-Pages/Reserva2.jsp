@@ -108,8 +108,6 @@
 
                                 <div class="single-room-area d-flex align-items-center mb-50 wow fadeInUp"
                                      data-wow-delay="100ms">
-
-
                                     <!-- Room Thumbnail -->
                                     <div class="room-thumbnail">
                                         <img src="img/bg-img/43.jpg" alt="">
@@ -118,7 +116,6 @@
                                     <div class="room-content">
                                         <h2 class="Direccion">${depart.DIRECCION}</h2>
                                         <h4 class="Precio">$${depart.PRECIO_DIARIO}<span>/ Día</span></h4>
-
                                         <div class="room-feature">
                                             <h6>Baños: <span>${depart.CANT_BANIOS}</span></h6>
                                             <h6>Dormitorios: <span>${depart.CANT_DORMITORIOS}</span></h6>
@@ -126,12 +123,8 @@
                                             <h6>Internet <span>${depart.INTERNET}</span></span></h6>
                                             <h6>Calefacción <span>${depart.CALEFACCION}</span></h6>
                                         </div>
-
-
-
-
-
-
+                                        
+                                        <input type="checkbox" name="check-${depart.ID}"/>
                                         <!--  <a href="ReservaInfo.jsp" class="btn view-detail-btn">Reservar <i
                                                   class="fa fa-long-arrow-right" aria-hidden="true"></i></a>-->
                                     </div>
@@ -151,11 +144,9 @@
                                            class="form-control">
                                     <input value="${fechaHasta}" name="fechaHasta" type="hidden" pattern="dd/MM/yyyy" id="checkin_date"
                                            class="form-control">
-
                                   <!--  <div class="col-12 col-md-3">-->
                                         <input type="submit" name="BTN_RESERVAR" class="form-control btn roberto-btn w-100" value="Reservar">
                                    <!-- </div>-->
-
                                 </form>
 
                             </c:forEach>

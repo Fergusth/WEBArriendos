@@ -45,7 +45,6 @@ public class ReservaController extends HttpServlet {
 
     public ArrayList<ServicioExtraDTO> serviciosEx;
 
-            
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
@@ -131,6 +130,7 @@ public class ReservaController extends HttpServlet {
 
                 for (Departamento depart : departamentos) {
                     DepartamentoDTO dpdto = new DepartamentoDTO();
+                    dpdto.setID(depart.getID().intValue());
                     dpdto.setDIRECCION(depart.getDIRECCION().getValue());
                     dpdto.setPRECIO_DIARIO(depart.getPRECIODIARIO().intValue());
                     dpdto.setCANT_BANIOS(depart.getCANTBANIOS().intValue());
@@ -163,56 +163,48 @@ public class ReservaController extends HttpServlet {
             } else {
                 request.getRequestDispatcher("index.jsp").forward(request, response);
             }
+
             DatosReserva(request, response);
 
         }
         if (request.getParameter("reservaPago") != null) {
-            try {
-                
+          /*  try {
+
                 SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
-              //  int departId = Integer.parseInt(request.getParameter("idDepartamento"));
-             //   Date checkIn = dateFormat.parse(request.getParameter("fechaDesde"));
-              //  Date checkOut = dateFormat.parse(request.getParameter("fechaHasta"));
-                Date checkIn = dateFormat.parse(request.getParameter("fechaDesde"));
-                Date checkOut = dateFormat.parse(request.getParameter("fechaHasta"));
-                String horaIn = "";
-                String horaSa = "";
+               // int departId = Integer.parseInt(request.getParameter("idDepartamento"));
+                Date fechaDesde = dateFormat.parse(request.getParameter("fechaDesde"));
+                Date fechaHasta = dateFormat.parse(request.getParameter("fechaHasta"));
+                String horaIn = "09:00AM";
+                String horaSa = "09:00AM";
                 String dniUsuario = "";
                 int precio = Integer.parseInt(request.getParameter("precioDiario"));
                 int totalPagado = (precio - Integer.parseInt(request.getParameter("totalPagado")));
                 String estado = "FaltaPago";
                 String formaPago = "MasterCard";
-                
+
                 HttpSession Session = request.getSession(true);
-                if(Session.getAttribute("cliente") != null){
+                if (Session.getAttribute("cliente") != null) {
                     UsuarioDTO udto = (UsuarioDTO) Session.getAttribute("cliente");
                     dniUsuario = udto.getDNI();
                 }
                 //ARREGLAR HORAS!!!!
-                //if(DepartamentoService.crearReserva(fECHACHECKIN, fECHACHECKOUT, horaIn, horaSa, dniUsuario, precio, totalPagado, estado, formaPago))
-                else{
-                     request.getRequestDispatcher("ReservarDepartamento.jsp").forward(request, response);
+                
+                //if (DepartamentoService.crearReserva(getXmlGregorianCalendarFromDate(fechaDesde), getXmlGregorianCalendarFromDate(fechaHasta), horaIn, horaSa, dniUsuario, precio, totalPagado, estado, formaPago)) {
+
+               // } else {
+                    request.getRequestDispatcher("ReservarDepartamento.jsp").forward(request, response);
 
                 }
-               
-                  
-                    
-                
-            
-            
-            }catch(ParseException ex) {
-                Logger.getLogger(ReservaController.class.getName()).log(Level.SEVERE, null, ex);
-                
-        //   }catch(DatatypeConfigurationException ex){
-          //      Logger.getLogger(ReservaController.class.getName()).log(Level.SEVERE, null, ex);
-            
 
+           // } catch (ParseException ex) {
+          //      Logger.getLogger(ReservaController.class.getName()).log(Level.SEVERE, null, ex);
+
+          //  } catch (DatatypeConfigurationException ex) {
+           //     Logger.getLogger(ReservaController.class.getName()).log(Level.SEVERE, null, ex);
+          //  }*/
         }
     }
-    }
-
-    
 
     public void DatosReserva(HttpServletRequest request, HttpServletResponse response) {
         ArrayList<ServicioExtraDTO> ServiceExt = new ArrayList<>();
@@ -223,10 +215,9 @@ public class ReservaController extends HttpServlet {
             svdto.setNOMBRE_SERVICIO(Servi.getNOMBRESERVICIOEX().getValue());
             svdto.setPRECIO_ACTUAL(Servi.getPRECIOACTUAL().intValue());
             ServiceExt.add(svdto);
-            
-            
+
         }
-        
+
         request.setAttribute("ServiceExt", ServiceExt);
         request.setAttribute("fechaDesde", request.getParameter("fechaDesde"));
         request.setAttribute("fechaHasta", request.getParameter("fechaHasta"));
@@ -238,18 +229,17 @@ public class ReservaController extends HttpServlet {
         request.setAttribute("descripcion", request.getParameter("descripcion"));
         request.setAttribute("internet", request.getParameter("internet"));
         request.setAttribute("calefaccion", request.getParameter("calefaccion"));
-        
 
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
 
         try {
-            
+
             Date checkIn = dateFormat.parse(request.getParameter("fechaDesde"));
             Date checkOut = dateFormat.parse(request.getParameter("fechaHasta"));
             int precio = Integer.parseInt(request.getParameter("precioDiario"));
             int dias = (int) ((checkOut.getTime() - checkIn.getTime()) / 86400000);
             request.setAttribute("total", dias * precio);
-            request.getRequestDispatcher("/ReservarDepartamento.jsp").forward(request, response);
+            request.getRequestDispatcher("ReservarDepartamento.jsp").forward(request, response);
         } catch (ParseException ex) {
             Logger.getLogger(ReservaController.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ServletException ex) {
