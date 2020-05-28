@@ -5,6 +5,11 @@
  */
 package DTO;
 
+import Service.ServiciosExtraService;
+import WS.ServicioExtra;
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  *
  * @author oskardashh
@@ -58,5 +63,45 @@ public class ServicioExtraDTO {
         this.ACTIVADO = ACTIVADO;
     }
     
+    public ArrayList<ServicioExtraDTO> ListarServiciosReserva(int id_reserva) {
+        List<ServicioExtra> bd_servicios = ServiciosExtraService.listarServicioExtraReserva(id_reserva).getServicioExtra();
+        ArrayList<ServicioExtraDTO> servicios = new ArrayList<>();
+        
+        for (ServicioExtra servicio : bd_servicios) {
+            ServicioExtraDTO serv = new ServicioExtraDTO();
+            serv.setID(servicio.getID());
+            serv.setNOMBRE_SERVICIO(servicio.getNOMBRESERVICIOEX().getValue());
+            serv.setPRECIO_ACTUAL(servicio.getPRECIOACTUAL());
+            
+            servicios.add(serv);
+        }
+        
+        
+        return servicios;
+    }
     
+    public ArrayList<ServicioExtraDTO> ListarServicios() {
+        List<ServicioExtra> bd_servicios = ServiciosExtraService.listarServiciosExtra().getServicioExtra();
+        ArrayList<ServicioExtraDTO> servicios = new ArrayList<>();
+        
+        for (ServicioExtra servicio : bd_servicios) {
+            ServicioExtraDTO serv = new ServicioExtraDTO();
+            serv.setID(servicio.getID());
+            serv.setNOMBRE_SERVICIO(servicio.getNOMBRESERVICIOEX().getValue());
+            serv.setPRECIO_ACTUAL(servicio.getPRECIOACTUAL());
+            
+            servicios.add(serv);
+        }
+        
+        
+        return servicios;
+    }
+    
+    public boolean contratarServicioExtra(int reserva_id, int id_servicio, boolean con_reserva) {
+        return ServiciosExtraService.contratarServicioExtra((short)id_servicio, (short)reserva_id, con_reserva);
+    }
+    
+    public boolean cancelarServicioExtra(int reserva_id, int id_servicio) {
+        return ServiciosExtraService.cancelarServicio((short)id_servicio, (short)reserva_id);
+    }
 }

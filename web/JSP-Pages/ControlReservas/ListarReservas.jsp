@@ -56,9 +56,12 @@
                                         value="${reserva.FECHA_CHECKOUT}"
                                         pattern="dd/MM/yyy"/>
                                     </td>
-                                    <td>${reserva.PRECIO_TOTAL}</td>
+                                    <td>$${reserva.PRECIO_TOTAL}</td>
                                     <td>
-                                        <button style="width: 100%;" type="button" class="btn btn-warning">Pagar</button>
+                                        <form method="POST" action="<c:url value="/ControlReservasController"/>">
+                                            <input type="hidden" value="${reserva.ID_RESERVA}" name="resApagarID"/>
+                                            <button style="width: 100%;" type="submit" name="btnPagar" class="btn btn-warning">Pagar</button>
+                                        </form>
                                     </td>
                                 </tr>
                             </c:forEach>
@@ -89,12 +92,41 @@
                                         value="${reserva.FECHA_CHECKOUT}"
                                         pattern="dd/MM/yyy"/>
                                     </td>
-                                    <td>${reserva.PRECIO_TOTAL}</td>
+                                    <td>$${reserva.PRECIO_TOTAL}</td>
                                     <td style="width: 200px;">
                                         <div>
-                                            <button style="width: 100%; margin-bottom: 8px;" type="button" class="btn btn-info">Acompañantes</button>
-                                            <button style="width: 100%; margin-bottom: 8px;" type="button" class="btn btn-success">Servicios extra</button>
-                                            <button style="width: 100%;" type="button" class="btn btn-danger">Cancelar reserva</button>
+                                            <form method="POST" action="<c:url value="/ControlReservasController"/>">
+                                                <input type="hidden" value="${reserva.ID_RESERVA}" name="reserva_id"/>
+                                                <button style="width: 100%; margin-bottom: 8px;" type="submit" name="btnAcompanantes" class="btn btn-info">Acompañantes</button>
+                                                <button style="width: 100%; margin-bottom: 8px;" type="submit" name="btnServicios" class="btn btn-success">Servicios extra</button>
+                                                
+                                                <!-- Button trigger modal -->
+                                                <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Cancelar reserva</button>
+
+                                                <!-- Modal -->
+                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                  <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                      <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">Cancelar reserva</h5>
+                                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                          <span aria-hidden="true">&times;</span>
+                                                        </button>
+                                                      </div>
+                                                      <div class="modal-body">
+                                                        <center>
+                                                            <h3>¿Seguro que desea cancelar la reserva ID: <strong>${reserva.ID_RESERVA}</strong>?</h3>
+                                                        </center>
+                                                      </div>
+                                                      <div class="modal-footer">
+                                                        <button style="width: 100px;" type="submit" name="siCancelar" class="btn btn-info">Sí</button>
+                                                        <button style="width: 100px;" type="button" name="noCancelar" class="btn btn-danger" data-dismiss="modal">No</button>
+                                                       
+                                                      </div>
+                                                    </div>
+                                                  </div>
+                                                </div>
+                                            </form>
                                         </div>
                                     </td>
                                 </tr>
@@ -126,8 +158,8 @@
                                         value="${reserva.FECHA_CHECKOUT}"
                                         pattern="dd/MM/yyy"/>
                                     </td>
-                                    <td>${reserva.PRECIO_TOTAL}</td>
-                                    <td>
+                                    <td>$${reserva.PRECIO_TOTAL}</td>
+                                    <td style="width: 200px;">
                                         <button style="width: 100%; margin-bottom: 8px;" type="button" class="btn btn-success">Servicios extra</button>
                                     </td>
                                 </tr>
@@ -160,8 +192,8 @@
                                         value="${reserva.FECHA_CHECKOUT}"
                                         pattern="dd/MM/yyy"/>
                                     </td>
-                                    <td>${reserva.PRECIO_TOTAL}</td>
-                                    <td>${reserva.TOTAL_PAGADO}</td>
+                                    <td>$${reserva.PRECIO_TOTAL}</td>
+                                    <td>$${reserva.TOTAL_PAGADO}</td>
                                     <td>${reserva.ESTADO}</td>
                                 </tr>
                             </c:forEach>

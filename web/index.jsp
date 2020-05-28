@@ -29,7 +29,7 @@
             <form action="<c:url value="/UsuarioController"/>" method="POST">
                 <div class="form-group text-center">
                     <img src="<c:url value="img/core-img/LogoTurismo.png"/>" height="200" width="200"/>
-                    <p><strong>¡Bienvenido a Turismo Real!</strong></p>
+                    <p style="margin-top: -16px;"><strong>¡Bienvenido a Turismo Real!</strong></p>
                     
                 </div>
                 

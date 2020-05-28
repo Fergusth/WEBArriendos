@@ -168,6 +168,18 @@ public class ReservaDTO {
         return reservas;
     }
     
+    public boolean pagarReservaAnticipo(int id, int pago){
+        return ReservaService.pagarReservaAnticipo(id, pago);
+    }
+    
+    public boolean pagarReservaTotal(int id){
+        return ReservaService.pagarReservaTotal(id);
+    }
+    
+    public boolean cancelarReserva(int id){
+        return ReservaService.cancelarReserva(id);
+    }
+    
     private static XMLGregorianCalendar getXmlGregorianCalendarFromDate(final Date date) throws DatatypeConfigurationException {
         GregorianCalendar calendar = new GregorianCalendar();
 

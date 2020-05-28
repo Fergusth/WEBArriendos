@@ -45,7 +45,6 @@
                                     <h2 data-animation="fadeInLeft" data-delay="500ms">Bienvenido a Turismo Real </h2>
                                     <h2 data-animation="fadeInLeft" data-delay="500ms"><c:out value="${nombreUsuario}"/></h2>
                                     
-                                    <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInLeft" data-delay="800ms">Registrarse</a>
                                 </div>
                             </div>
                         </div>
@@ -66,7 +65,6 @@
                                     <h2 data-animation="fadeInLeft" data-delay="500ms">Bienvenido a 
                                     Turismo Real</h2>
                                     <h2 data-animation="fadeInLeft" data-delay="500ms"><c:out value="${nombreUsuario}"/></h2>
-                                    <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInLeft" data-delay="800ms">Registrate</a>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +85,6 @@
                                     <h2 data-animation="fadeInLeft" data-delay="500ms">Bienvenido a 
                                     Turismo Real</h2>
                                     <h2 data-animation="fadeInLeft" data-delay="500ms"><c:out value="${nombreUsuario}"/></h2>
-                                    <a href="#" class="btn roberto-btn btn-2" data-animation="fadeInLeft" data-delay="800ms">Registrate</a>
                                 </div>
                             </div>
                         </div>

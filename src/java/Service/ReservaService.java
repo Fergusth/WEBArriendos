@@ -31,5 +31,23 @@ public class ReservaService {
         WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
         return port.listarReservasUsuarioEstado(dni, estado);
     }
+
+    public static Boolean cancelarReserva(java.lang.Integer idReserva) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.cancelarReserva(idReserva);
+    }
+
+    public static Boolean pagarReservaAnticipo(java.lang.Integer idReserva, java.lang.Integer pago) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.pagarReservaAnticipo(idReserva, pago);
+    }
+
+    public static Boolean pagarReservaTotal(java.lang.Integer idReserva) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.pagarReservaTotal(idReserva);
+    }
     
 }

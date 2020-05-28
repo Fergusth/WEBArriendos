@@ -34,7 +34,7 @@
             <br>
             <div style="display: flex; justify-content: space-between">
                 <h4>Total a pagar: $<c:out value="${totalMulta}"/></h4>
-                <a href="${linkPago}">Pagar</a>
+                <a class="btn btn-warning" href="${linkPago}">Pagar</a>
             </div>
         </div>
     </body>

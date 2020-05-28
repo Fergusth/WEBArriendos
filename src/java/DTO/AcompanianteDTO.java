@@ -5,6 +5,8 @@
  */
 package DTO;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Oskardashh

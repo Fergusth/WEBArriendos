@@ -24,6 +24,18 @@ public class ServiciosExtraService {
         WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
         return port.listarServicioExtraReserva(idReserva);
     }
+
+    public static Boolean contratarServicioExtra(java.lang.Short serv, java.lang.Short res, java.lang.Boolean conReserva) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.contratarServicioExtra(serv, res, conReserva);
+    }
+
+    public static Boolean cancelarServicio(java.lang.Short serv, java.lang.Short res) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.cancelarServicio(serv, res);
+    }
     
     
     

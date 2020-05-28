@@ -95,19 +95,16 @@
                             <div class="classynav">
                                 <ul id="nav">
                                     <li class="active"><a href="Inicio.jsp">Inicio</a></li>
-                                    <li><a href="<c:url value="ReservaController"/>">Departamentos</a></li>
-                                    <li><a href="<c:url value="MultaController"/>">Multas</a></li>
-                                    <li><a href="./contact.html">Contacto</a></li>
+                                    <li><a href="<c:url value="/ReservaController"/>">Reservar</a></li>
+                                    <li><a href="<c:url value="/MultaController"/>">Multas</a></li>
+                                    <li><a href="<c:url value="/ControlReservasController"/>">Mis reservas</a></li>
                                 </ul>
 
-                                <!-- Search -->
-                                <div class="search-btn ml-4">
-                                    <i class="fa fa-search" aria-hidden="true"></i>
-                                </div>
+                                
 
                                 <!-- Book Now -->
                                 <div class="book-now-btn ml-3 ml-lg-5">
-                                    <a href="<c:url value="UsuarioController"/>">Cerrar Sesión <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
+                                    <a href="<c:url value="/CerrarSesionController"/>">Cerrar Sesión <i class="fa fa-long-arrow-right" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                             <!-- Nav End -->

@@ -83,7 +83,8 @@ public class MultaController extends HttpServlet {
                     }
                 }
                 if (haMarcado) {
-                    FlowResponse flow_response = PagoService.generarLinkPago(total_multa, usudto.getCORREO_ELECTRONICO(), "http://localhost:27710/WEBArriendos/ConfirmacionMultaController?token=" + multasId);
+                    int puerto = request.getLocalPort();
+                    FlowResponse flow_response = PagoService.generarLinkPago(total_multa, usudto.getCORREO_ELECTRONICO(), "http://localhost:" + puerto + "/WEBArriendos/ConfirmacionMultaController?token=" + multasId);
                     String linkPago = flow_response.getUrl().getValue() + "?token=" + flow_response.getToken().getValue();
   
                     request.setAttribute("linkPago", linkPago);
