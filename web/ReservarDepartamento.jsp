@@ -149,8 +149,6 @@
 
 
         <div class="container">
-
-
             <div class="py-5 text-center">
                 <hr>
             </div>
@@ -161,11 +159,9 @@
                         <span class="text-muted">Servicios Extra</span>
                     </h4>
 
-
                     <div class="panel panel-default">
                         <!--<div class="panel-heading">Servicios</div>-->
                         <div class="panel-body">
-
 
                             <form method="post" action="<c:url value="/ReservaController"/>">
 
@@ -184,13 +180,7 @@
                                 </div>
                         </div>
                     </div>
-
-
-
-
-
                 </div>
-
 
 
                 <!-- DATOS DE LA REVERSA: -->
@@ -223,9 +213,7 @@
                         <div class="mb-3">
                             <label for="username">Descripción:</label>
                             <div class="input-group">
-
                                 <input disabled="true" type="text" class="form-control" id="username" value="${descripcion}" placeholder="Username" required>
-                                
                             </div>
                         </div>
                         <div class="row">
@@ -244,10 +232,7 @@
                                     <input disabled="true" value="${fechaHasta}" name="fechaHasta" pattern="yyyy-MM-dd" type="date" id="checkout_date" class="form-control">
                                 </div>
                             </div>
-
-
                         </div>
-
 
                         <div class="row">
                             <div class="col-md-6">
@@ -255,8 +240,6 @@
                                 <h1>$ <c:out value="${total}"/></h1>  
                             </div>
                         </div>
-
-
 
                         <hr class="mb-4">
                         <!--<input type="submit" name="reservaPago" class="btn btn-danger btn-md" value="Pagar Reserva" id="btn-chat">-->
@@ -270,95 +253,8 @@
         </div>
 
 
-        <!--
-                    <form method="post" action="<c:url value="/ReservaController"/>">
-        
-        
-        <!--
-        <div class="row">
-            <div class="col-12 col-lg-8">
-
-        -->
-        <!-- <div class="col-sm-9 col-sm-offset-3 col-lg-10 col-lg-offset-2 main">
-             <div class="row">-->
-        <!--<h2>Reservar el Departamento:</h2>-->
-        <!--
-        <div class="item">
-            <div class="block-34">
-
-                <div class="text">
-                    <h2 class="Direccion">${direccion}</h2>
-                    <div class="precio"><sup>$</sup><span class="number">${precioDiario}</span><sub>/por día</sub></div>
-                    <ul class="specs">
-                        <li><strong>Habitaciones:</strong>${cantHabit}</li>
-                        <li><strong>Baños:</strong> ${cantBanios}</li>
-                        <li><strong>Descripción:</strong>${descripcion}</li>
-                        <li><strong>DIRECCION: </strong>${direccion}</li>
-
-                    </ul>
-                </div>
-            </div>
-        </div>
-        -->
-        <input type="hidden" name="iddepto" value="${ID}"/>
-        <input type="hidden" name="direccion" value="${depart.Direccion}"/>
-        <input type="hidden" name="precio" value="${PRECIO_DIARIO}"/>
-        <input type="hidden" name="cantidaddormitorios" value="${CANT_DORMITORIOS}"/>
-        <input type="hidden" name="cantidadbanios" value="${CANT_BANIOS}"/>
-        <input type="hidden" name="descripcion" value="${DESCRIPCION}"/>
-        <input type="hidden" name="totalPagado" value="${totalPagado}"/>
-
-        <input value="${fechaDesde}" name="fechaDesde" type="hidden" pattern="yyyy-MM-dd"/>
-        <input value="${fechaHasta}" name="fechaHasta" type="hidden" pattern="yyyy-MM-dd"/>
-        <!--<div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-            <label for="checkin">Check-In</label>
-            <div class="field-icon-wrap">
-                <div class="icon"><span class="icon-calendar"></span></div>
-                <input disabled="true" value="${fechaDesde}" name="fechaDesde" type="date" pattern="yyyy-MM-dd" id="checkin_date" class="form-control">
-            </div>
-
-        </div>
-        <div class="col-md-6 mb-3 mb-lg-0 col-lg-3">
-            <label for="checkin">Check-Out:</label>
-            <div class="field-icon-wrap">
-                <div class="icon"><span class="icon-calendar"></span></div>
-                <input disabled="true" value="${fechaHasta}" name="fechaHasta" pattern="yyyy-MM-dd" type="date" id="checkout_date" class="form-control">
-            </div>
-        </div>
-        <h1>Precio total:</h1>
-        <h2>$ <c:out value="${total}"/></h2>
-        
-        -->
-        <!--
-        <div class="col-md-8">
-            <div class="panel panel-default">
-                <div class="panel-heading">Servicios</div>
-                <div class="panel-body">
-                    <form method="post" action="<c:url value="/ReservaController"/>">
-                        <h4>Ingresar servicios</h4>
-                        <div class="input-group col-md-2">
-                            <select name="servicios" id="Servicios" class="form-control">
-        <c:forEach var="Servi" items="${ServiceExt}">
-            <option value="${Servi.ID}">${Servi.NOMBRE_SERVICIO}</option>
-        </c:forEach>
-    </select>
-</div>
-<div class="col-md-12">
-
-</div>
-<input type="submit" name="reservaPago" class="btn btn-danger btn-md" value="Pagar Reserva" id="btn-chat">
-
-</div>
-</div>
-</div>
-
-</div>
-</div>
-</div>
-
-</form>
-        -->
-
+      
+       
         <!-- Footer Area Start -->
         <footer class="footer-area section-padding-80-0">
             <!-- Main Footer Area -->

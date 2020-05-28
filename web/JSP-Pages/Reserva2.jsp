@@ -123,7 +123,7 @@
                                             <h6>Internet <span>${depart.INTERNET}</span></span></h6>
                                             <h6>Calefacción <span>${depart.CALEFACCION}</span></h6>
                                         </div>
-                                        
+
                                         <input type="checkbox" name="check-${depart.ID}"/>
                                         <!--  <a href="ReservaInfo.jsp" class="btn view-detail-btn">Reservar <i
                                                   class="fa fa-long-arrow-right" aria-hidden="true"></i></a>-->
@@ -139,14 +139,14 @@
                                     <input type="hidden" name="internet" value="${depart.INTERNET}" />
                                     <input type="hidden" name="calefaccion" value="${depart.CALEFACCION}" />
                                     <input type="hidden" name="direccion" value="${depart.DIRECCION}"/>
-                                    
+
                                     <input value="${fechaDesde}" name="fechaDesde" type="hidden" pattern="dd/MM/yyyy" id="checkin_date"
                                            class="form-control">
                                     <input value="${fechaHasta}" name="fechaHasta" type="hidden" pattern="dd/MM/yyyy" id="checkin_date"
                                            class="form-control">
-                                  <!--  <div class="col-12 col-md-3">-->
-                                        <input type="submit" name="BTN_RESERVAR" class="form-control btn roberto-btn w-100" value="Reservar">
-                                   <!-- </div>-->
+                                    <!--  <div class="col-12 col-md-3">-->
+                                    <input type="submit" name="BTN_RESERVAR" class="form-control btn roberto-btn w-100" value="Reservar">
+                                    <!-- </div>-->
                                 </form>
 
                             </c:forEach>
@@ -220,108 +220,111 @@
                                         <button type="submit" name="BTN_RESERVAR" class="btn roberto-btn w-100">Revisa Disponibilidad</button>
                                     </div>
                                 </form>
+
+                                
+
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
-            <!-- Rooms Area End -->
+                <!-- Rooms Area End -->
 
 
 
-            <!-- Footer Area Start -->
-            <footer class="footer-area section-padding-80-0">
-                <!-- Main Footer Area -->
-                <div class="main-footer-area">
+                <!-- Footer Area Start -->
+                <footer class="footer-area section-padding-80-0">
+                    <!-- Main Footer Area -->
+                    <div class="main-footer-area">
+                        <div class="container">
+                            <div class="row align-items-baseline justify-content-between">
+                                <!-- Single Footer Widget Area -->
+                                <div class="col-12 col-sm-6 col-lg-3">
+                                    <div class="single-footer-widget mb-80">
+                                        <!-- Footer Logo -->
+                                        <a href="#" class="footer-logo"><img src="img/core-img/LogoTurismo1.png" alt=""></a>
+
+                                        <h4>+12 345-678-9999</h4>
+                                        <span>turismoreal@gmail.com</span>
+                                        <span>856 Paicaví, Concepción.</span>
+                                    </div>
+                                </div>
+
+
+
+                                <!-- Single Footer Widget Area -->
+                                <div class="col-12 col-sm-4 col-lg-2">
+                                    <div class="single-footer-widget mb-80">
+                                        <!-- Widget Title -->
+                                        <h5 class="widget-title">Links</h5>
+
+                                        <!-- Footer Nav -->
+                                        <ul class="footer-nav">
+                                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Departamentos</a></li>
+                                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Nosotros</a></li>
+                                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Multas</a></li>
+                                            <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Contacto</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <!-- Single Footer Widget Area -->
+                                <div class="col-12 col-sm-8 col-lg-4">
+                                    <div class="single-footer-widget mb-80">
+                                        <!-- Widget Title -->
+                                        <h5 class="widget-title">Subscribete </h5>
+                                        <span>Subscribete para más información.</span>
+
+                                        <!-- Newsletter Form -->
+                                        <form action="index.html" class="nl-form">
+                                            <input type="email" class="form-control" placeholder="Ingresa tu Email...">
+                                            <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Copywrite Area -->
                     <div class="container">
-                        <div class="row align-items-baseline justify-content-between">
-                            <!-- Single Footer Widget Area -->
-                            <div class="col-12 col-sm-6 col-lg-3">
-                                <div class="single-footer-widget mb-80">
-                                    <!-- Footer Logo -->
-                                    <a href="#" class="footer-logo"><img src="img/core-img/LogoTurismo1.png" alt=""></a>
-
-                                    <h4>+12 345-678-9999</h4>
-                                    <span>turismoreal@gmail.com</span>
-                                    <span>856 Paicaví, Concepción.</span>
+                        <div class="copywrite-content">
+                            <div class="row align-items-center">
+                                <div class="col-12 col-md-8">
+                                    <!-- Copywrite Text -->
+                                    <div class="copywrite-text">
+                                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                                            Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank"></a>
+                                            <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
+                                    </div>
                                 </div>
-                            </div>
-
-
-
-                            <!-- Single Footer Widget Area -->
-                            <div class="col-12 col-sm-4 col-lg-2">
-                                <div class="single-footer-widget mb-80">
-                                    <!-- Widget Title -->
-                                    <h5 class="widget-title">Links</h5>
-
-                                    <!-- Footer Nav -->
-                                    <ul class="footer-nav">
-                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Departamentos</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Nosotros</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Multas</a></li>
-                                        <li><a href="#"><i class="fa fa-caret-right" aria-hidden="true"></i>Contacto</a></li>
-                                    </ul>
-                                </div>
-                            </div>
-
-                            <!-- Single Footer Widget Area -->
-                            <div class="col-12 col-sm-8 col-lg-4">
-                                <div class="single-footer-widget mb-80">
-                                    <!-- Widget Title -->
-                                    <h5 class="widget-title">Subscribete </h5>
-                                    <span>Subscribete para más información.</span>
-
-                                    <!-- Newsletter Form -->
-                                    <form action="index.html" class="nl-form">
-                                        <input type="email" class="form-control" placeholder="Ingresa tu Email...">
-                                        <button type="submit"><i class="fa fa-paper-plane" aria-hidden="true"></i></button>
-                                    </form>
+                                <div class="col-12 col-md-4">
+                                    <!-- Social Info -->
+                                    <div class="social-info">
+                                        <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                                        <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                                        <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
+                                        <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
+                </footer>
+                <!-- Footer Area End -->
 
-                <!-- Copywrite Area -->
-                <div class="container">
-                    <div class="copywrite-content">
-                        <div class="row align-items-center">
-                            <div class="col-12 col-md-8">
-                                <!-- Copywrite Text -->
-                                <div class="copywrite-text">
-                                    <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank"></a>
-                                        <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-4">
-                                <!-- Social Info -->
-                                <div class="social-info">
-                                    <a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a>
-                                    <a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </footer>
-            <!-- Footer Area End -->
+                <!-- **** All JS Files ***** -->
+                <!-- jQuery 2.2.4 -->
+                <script src="js/jquery.min.js"></script>
+                <!-- Popper -->
+                <script src="js/popper.min.js"></script>
+                <!-- Bootstrap -->
+                <script src="js/bootstrap.min.js"></script>
+                <!-- All Plugins -->
+                <script src="js/roberto.bundle.js"></script>
+                <!-- Active -->
+                <script src="js/default-assets/active.js"></script>
 
-            <!-- **** All JS Files ***** -->
-            <!-- jQuery 2.2.4 -->
-            <script src="js/jquery.min.js"></script>
-            <!-- Popper -->
-            <script src="js/popper.min.js"></script>
-            <!-- Bootstrap -->
-            <script src="js/bootstrap.min.js"></script>
-            <!-- All Plugins -->
-            <script src="js/roberto.bundle.js"></script>
-            <!-- Active -->
-            <script src="js/default-assets/active.js"></script>
+                </body>
 
-    </body>
-
-</html>
+                </html>
