@@ -15,6 +15,24 @@
     </head>
     <body>
         <jsp:include page="../Navbar1.jsp"/>
+        <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(img/bg-img/16.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="breadcrumb-content text-center">
+                            <h2 class="page-title">Servicios extra</h2>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="<c:url value="/UsuarioController"/>">Inicio</a></li>
+                                    <li class="breadcrumb-item">Mis reservas</li>
+                                    <li class="breadcrumb-item">Servicios extra</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <br><br><br>
         <form method="POST" action="<c:url value="/ControlReservasController"/>">
             <input type="hidden" value="${reserva_id}" name="reserva_id"/>
@@ -27,7 +45,7 @@
                     <select name="selectServ" id="Servicios" class="form-control">
                         <option value="NONE">Seleccione</option>
                         <c:forEach var="Servi" items="${servicios}">
-                            <option value="${Servi.ID}">${Servi.NOMBRE_SERVICIO}</option>
+                            <option value="${Servi.ID}">${Servi.NOMBRE_SERVICIO} - $${Servi.PRECIO_ACTUAL} /Día</option>
                         </c:forEach>
                     </select>
                     <br>

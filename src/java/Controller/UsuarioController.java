@@ -43,10 +43,7 @@ public class UsuarioController extends HttpServlet {
         HttpSession Session = request.getSession(true);
         if (Session.getAttribute("cliente") != null){
             UsuarioDTO usudto = (UsuarioDTO) Session.getAttribute("cliente");
-           /* if (usudto.getROL() == 1){
-                response.
-            }
-            */
+            request.getRequestDispatcher("Inicio.jsp").forward(request, response);
         } else{
             request.getRequestDispatcher("index.jsp").forward(request, response);
         }
@@ -63,7 +60,7 @@ public class UsuarioController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        if(request.getParameter("btn").equals("Ingresar")){
+        if(request.getParameter("btnIniciar") != null){
             String dni = request.getParameter("txtDNI");
             String pass = request.getParameter("txtPassword");
             

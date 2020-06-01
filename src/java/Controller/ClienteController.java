@@ -6,6 +6,7 @@
 package Controller;
 
 import DTO.UsuarioDTO;
+import Service.UsuarioService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -27,7 +28,10 @@ public class ClienteController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         UsuarioDTO us = (UsuarioDTO) session.getAttribute("cliente");
-        
+        boolean existe = UsuarioService.existeUsuario(us.getDNI());
+        if (!existe) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
         if (us != null) {
             request.setAttribute("nombreUsuario", us.getNOMBRE());
             request.getRequestDispatcher("JSP-Pages/welcome.jsp").forward(request, response);

@@ -42,7 +42,7 @@
                     <input type="password" name="txtPassword" placeholder="*************" class="form-control">
                 </div>
                  <label class="error"><c:out value="${error}"/></label>
-                <input class="btn btn-info btn-block" type="submit" name="btn" value="Ingresar">
+                <input class="btn btn-info btn-block" type="submit" name="btnIniciar" value="Iniciar sesión">
             </form>
         </div>
         

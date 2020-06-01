@@ -19,6 +19,24 @@
     </head>
     <body>
         <jsp:include page="../Navbar1.jsp"/>
+        <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(img/bg-img/16.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="breadcrumb-content text-center">
+                            <h2 class="page-title">Multas</h2>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="<c:url value="/UsuarioController"/>">Inicio</a></li>
+                                    <li class="breadcrumb-item">Multas</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <br><br><br>
         <div style="padding: 0 24px;">
             <h5 class="error"><c:out value="${error}"/></h5>
             <c:if test="${tieneMultasImpagas == true}">
@@ -26,10 +44,10 @@
                     <h3>Multas impagas</h3>
                     <table class="table table-bordered" style="margin-bottom: 32px;">
                         <thead>
-                            <th>ID Multa</th>
-                            <th>Descripción</th>
-                            <th>Precio (Pesos)</th>
-                            <th>Pagar</th>
+                        <th>ID Multa</th>
+                        <th>Descripción</th>
+                        <th>Precio (Pesos)</th>
+                        <th>Pagar</th>
                         </thead>
                         <tbody>
                             <c:forEach items="${lstMultasImpagas}" var="multa">
@@ -51,10 +69,10 @@
                 <h3>Todas mis multas</h3>
                 <table class="table table-bordered">
                     <thead>
-                        <th>ID Multa</th>
-                        <th>Descripción</th>
-                        <th>Precio (Pesos)</th>
-                        <th>¿Pagado?</th>
+                    <th>ID Multa</th>
+                    <th>Descripción</th>
+                    <th>Precio (Pesos)</th>
+                    <th>¿Pagado?</th>
                     </thead>
                     <tbody>
                         <c:forEach items="${lstMultas}" var="multa">
@@ -70,7 +88,7 @@
             </c:if>
             <c:if test="${tieneMultas == false}">
                 <center><h3>No tienes multas en tu historial</h3></center>
-            </c:if>
+                </c:if>
         </div>
     </body>
 </html>

@@ -5,6 +5,7 @@
  */
 package Service;
 
+import WS.Acompaniante;
 import WS.ArrayOfAcompaniante;
 
 /**
@@ -23,6 +24,24 @@ public class AcompanianteService {
         WS.ServicioTR service = new WS.ServicioTR();
         WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
         return port.listarAcompaniatesReserva(idReserva);
+    }
+
+    public static Acompaniante buscarAcompaniante(java.lang.String dni) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.buscarAcompaniante(dni);
+    }
+
+    public static Boolean crearAcompanianteReserva(java.lang.String dni, java.lang.Integer reserva) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.crearAcompanianteReserva(dni, reserva);
+    }
+
+    public static Boolean borrarAcompanianteReserva(java.lang.Integer reserva, java.lang.String dni) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.borrarAcompanianteReserva(reserva, dni);
     }
     
     

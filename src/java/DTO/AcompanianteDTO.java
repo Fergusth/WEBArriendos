@@ -5,7 +5,10 @@
  */
 package DTO;
 
+import Service.AcompanianteService;
+import WS.Acompaniante;
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -15,14 +18,14 @@ public class AcompanianteDTO {
     
     private String DNI;
     private String NOMBRE_COMPLETO;
-    private char EXTRANJERO;
+    private String EXTRANJERO;
     private String CORREO;
     private int TELEFONO;
 
     public AcompanianteDTO() {
     }
 
-    public AcompanianteDTO(String DNI, String NOMBRE_COMPLETO, char EXTRANJERO, String CORREO, int TELEFONO) {
+    public AcompanianteDTO(String DNI, String NOMBRE_COMPLETO, String EXTRANJERO, String CORREO, int TELEFONO) {
         this.DNI = DNI;
         this.NOMBRE_COMPLETO = NOMBRE_COMPLETO;
         this.EXTRANJERO = EXTRANJERO;
@@ -46,11 +49,11 @@ public class AcompanianteDTO {
         this.NOMBRE_COMPLETO = NOMBRE_COMPLETO;
     }
 
-    public char getEXTRANJERO() {
+    public String getEXTRANJERO() {
         return EXTRANJERO;
     }
 
-    public void setEXTRANJERO(char EXTRANJERO) {
+    public void setEXTRANJERO(String EXTRANJERO) {
         this.EXTRANJERO = EXTRANJERO;
     }
 
@@ -70,8 +73,33 @@ public class AcompanianteDTO {
         this.TELEFONO = TELEFONO;
     }
     
+    public AcompanianteDTO BuscarAcompaniante(String dni) {
+        Acompaniante bd_acomp = AcompanianteService.buscarAcompaniante(dni);
+        return new AcompanianteDTO(bd_acomp.getDNI().getValue(), bd_acomp.getNOMBRECOMPLETO().getValue(), bd_acomp.getEXTRANJERO().getValue(), bd_acomp.getCORREO().getValue(), bd_acomp.getTELEFONO().intValue());
+    }
     
+    public boolean crearAcompanianteReserva(String dni, int res) {
+        return AcompanianteService.crearAcompanianteReserva(dni, res);
+    }
     
+    public ArrayList<AcompanianteDTO> BuscarAcompaniantesReserva(int id_reserva) {
+        List<Acompaniante> acompaniantes = AcompanianteService.listarAcompaniatesReserva(id_reserva).getAcompaniante();
+        ArrayList<AcompanianteDTO> acomps = new ArrayList<>();
+        for (Acompaniante acompaniante : acompaniantes) {
+            AcompanianteDTO aco = new AcompanianteDTO();
+            aco.setCORREO(acompaniante.getCORREO().getValue());
+            aco.setDNI(acompaniante.getDNI().getValue());
+            aco.setEXTRANJERO(acompaniante.getEXTRANJERO().getValue());
+            aco.setNOMBRE_COMPLETO(acompaniante.getNOMBRECOMPLETO().getValue());
+            aco.setTELEFONO(acompaniante.getTELEFONO());
+            acomps.add(aco);
+        }
+        
+        return acomps;
+    }
     
+    public boolean borrarAcompanianteReserva(int reserva, String dni) {
+        return AcompanianteService.borrarAcompanianteReserva(reserva, dni);
+    }
     
 }

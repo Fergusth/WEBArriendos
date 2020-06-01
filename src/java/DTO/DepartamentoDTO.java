@@ -15,7 +15,7 @@ import java.util.List;
  * @author oskardashh
  */
 public class DepartamentoDTO {
-    
+
     private int ID;
     private String DIRECCION;
     private int CANT_BANIOS;
@@ -32,8 +32,8 @@ public class DepartamentoDTO {
     public DepartamentoDTO() {
     }
 
-    public DepartamentoDTO(int ID, String DIRECCION, int CANT_BANIOS, int CANT_DORMITORIOS, int PRECIO_DIARIO, 
-            String DESCRIPCION, String CONDICIONES_USO, int CIUDAD_ID, String INTERNET, String CALEFACCION, int PROM_MES_DIVIDENDO, 
+    public DepartamentoDTO(int ID, String DIRECCION, int CANT_BANIOS, int CANT_DORMITORIOS, int PRECIO_DIARIO,
+            String DESCRIPCION, String CONDICIONES_USO, int CIUDAD_ID, String INTERNET, String CALEFACCION, int PROM_MES_DIVIDENDO,
             int PROM_MES_CONTRIBUCIONES) {
         this.ID = ID;
         this.DIRECCION = DIRECCION;
@@ -144,27 +144,21 @@ public class DepartamentoDTO {
     public void setPROM_MES_CONTRIBUCIONES(int PROM_MES_CONTRIBUCIONES) {
         this.PROM_MES_CONTRIBUCIONES = PROM_MES_CONTRIBUCIONES;
     }
-    
- 
-    /*public List<DepartamentoDTO> ListarDepartamentos(){
-        DepartamentoService dpts = new DepartamentoService();
-        List<Departamento> departamento = dpts.listarDepartamentos().getDepartamento();
-        ArrayList<DepartamentoDTO> dptReturn = new ArrayList<>();
-        
-        for (Departamento departaments : departamento){
-            System.out.println(departaments.getID().byteValue());
-            DepartamentoDTO depto = new DepartamentoDTO(departaments.getID().byteValue(), departaments.getDIRECCION().getValue(),
-            departaments.getCANTBANIOS().byteValue(), departaments.getCANTDORMITORIOS().byteValue(), departaments.getPRECIODIARIO().byteValue(),
-            departaments.getDESCRIPCION().getValue(), departaments.getCONDICIONESUSO().getValue(), departaments.getCIUDADID().byteValue(), departaments.getINTERNET().getValue().charAt(INTERNET),
-            departaments.getCALEFACCION().getValue().charAt(CALEFACCION), departaments.getPROMMESDIVIDENDO().byteValue(), departaments.getPROMMESCONTRIBUCIONES().byteValue());
-            dptReturn.add(depto);
+
+    public boolean contratoDepartamentoReserva(int id_depa, int id_reserva) {
+        return DepartamentoService.contratoReservaDepartamento(id_reserva, id_depa);
+    }
+
+    public ArrayList<DepartamentoDTO> buscarDepartamentosReserva(int idreserva) {
+        List<Departamento> bd_depas = DepartamentoService.departamentosReserva(idreserva).getDepartamento();
+        ArrayList<DepartamentoDTO> depas = new ArrayList<>();
+        for (Departamento bd_depa : bd_depas) {
+            DepartamentoDTO depa = new DepartamentoDTO();
+            depa.setDIRECCION(bd_depa.getDIRECCION().getValue());
+            depa.setPRECIO_DIARIO(bd_depa.getPRECIODIARIO());
+            depas.add(depa);
         }
-        return dptReturn;
         
-        //int ID, String DIRECCION, int CANT_BANIOS, int CANT_DORMITORIOS, int PRECIO_DIARIO, 
-       //     String DESCRIPCION, String CONDICIONES_USO, int CIUDAD_ID, char INTERNET, char CALEFACCION, int PROM_MES_DIVIDENDO, 
-         //   int PROM_MES_CONTRIBUCIONES)
-        
-    }*/
-    
+        return depas;
+    }
 }

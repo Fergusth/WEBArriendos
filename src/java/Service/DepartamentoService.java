@@ -23,13 +23,16 @@ public class DepartamentoService {
         return port.departamentosDisponiblesPorFecha(inicio, fin, idciudad);
     }
 
-    public static Reserva crearReserva(javax.xml.datatype.XMLGregorianCalendar fECHACHECKIN, javax.xml.datatype.XMLGregorianCalendar fECHACHECKOUT, java.lang.String hORACHECKIN, java.lang.String hORACHECKOUT, java.lang.String uSUARIODNI, java.lang.Integer pRECIOTOTAL, java.lang.Integer tOTALPAGADO, java.lang.String eSTADO, java.lang.String fORMAPAGO) {
+    public static Boolean contratoReservaDepartamento(java.lang.Integer idReserva, java.lang.Integer idDepartamento) {
         WS.ServicioTR service = new WS.ServicioTR();
         WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
-        return port.crearReserva(fECHACHECKIN, fECHACHECKOUT, hORACHECKIN, hORACHECKOUT, uSUARIODNI, pRECIOTOTAL, tOTALPAGADO, eSTADO, fORMAPAGO);
+        return port.contratoReservaDepartamento(idReserva, idDepartamento);
     }
 
-    
-    
-    
+    public static ArrayOfDepartamento departamentosReserva(java.lang.Integer idreserva) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.departamentosReserva(idreserva);
+    }
+
 }

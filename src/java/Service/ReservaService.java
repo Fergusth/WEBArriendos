@@ -7,6 +7,7 @@ package Service;
 
 import WS.ArrayOfCiudad;
 import WS.ArrayOfReserva;
+import WS.Reserva;
 
 /**
  *
@@ -48,6 +49,12 @@ public class ReservaService {
         WS.ServicioTR service = new WS.ServicioTR();
         WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
         return port.pagarReservaTotal(idReserva);
+    }
+    
+    public static Reserva crearReserva(javax.xml.datatype.XMLGregorianCalendar fECHACHECKIN, javax.xml.datatype.XMLGregorianCalendar fECHACHECKOUT, java.lang.String hORACHECKIN, java.lang.String hORACHECKOUT, java.lang.String uSUARIODNI, java.lang.Integer pRECIOTOTAL, java.lang.Integer tOTALPAGADO, java.lang.String eSTADO, java.lang.String fORMAPAGO) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.crearReserva(fECHACHECKIN, fECHACHECKOUT, hORACHECKIN, hORACHECKOUT, uSUARIODNI, pRECIOTOTAL, tOTALPAGADO, eSTADO, fORMAPAGO);
     }
     
 }

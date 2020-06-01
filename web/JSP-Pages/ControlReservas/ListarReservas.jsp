@@ -15,6 +15,23 @@
     </head>
     <body>
         <jsp:include page="../Navbar1.jsp"/>
+        <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(img/bg-img/16.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                    <div class="col-12">
+                        <div class="breadcrumb-content text-center">
+                            <h2 class="page-title">Mis reservas</h2>
+                            <nav aria-label="breadcrumb">
+                                <ol class="breadcrumb justify-content-center">
+                                    <li class="breadcrumb-item"><a href="<c:url value="/UsuarioController"/>">Inicio</a></li>
+                                    <li class="breadcrumb-item">Mis reservas</li>
+                                </ol>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
         <br><br><br>
         <div style="padding: 0 24px;">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -22,7 +39,7 @@
                     <a class="nav-link active" id="home-tab" data-toggle="tab" href="#home" role="tab" aria-controls="home" aria-selected="true">Reservas a pagar</a>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Reservas futuras</a>
+                    <a class="nav-link" id="profile-tab" data-toggle="tab" href="#profile" role="tab" aria-controls="profile" aria-selected="false">Reservas posteriores</a>
                 </li>
                 <li class="nav-item" role="presentation">
                     <a class="nav-link" id="profile-tab" data-toggle="tab" href="#activa" role="tab" aria-controls="activa" aria-selected="false">Reservas activas</a>
@@ -39,7 +56,8 @@
                             <th>ID</th>
                             <th>Check-in</th>
                             <th>Check-out</th>
-                            <th>Precio total</th>
+                            <th>Precio total</th>                            
+                            <th>Precio pagado</th>
                             <th>Opciones</th>
                         </thead>
                         <tbody>
@@ -57,6 +75,7 @@
                                         pattern="dd/MM/yyy"/>
                                     </td>
                                     <td>$${reserva.PRECIO_TOTAL}</td>
+                                    <td>$${reserva.TOTAL_PAGADO}</td>
                                     <td>
                                         <form method="POST" action="<c:url value="/ControlReservasController"/>">
                                             <input type="hidden" value="${reserva.ID_RESERVA}" name="resApagarID"/>
@@ -75,7 +94,8 @@
                             <th>ID</th>
                             <th>Check-in</th>
                             <th>Check-out</th>
-                            <th>Precio total</th>
+                            <th>Precio total</th>                            
+                            <th>Precio pagado</th>
                             <th>Opciones</th>
                         </thead>
                         <tbody>
@@ -93,6 +113,7 @@
                                         pattern="dd/MM/yyy"/>
                                     </td>
                                     <td>$${reserva.PRECIO_TOTAL}</td>
+                                    <td>$${reserva.TOTAL_PAGADO}</td>
                                     <td style="width: 200px;">
                                         <div>
                                             <form method="POST" action="<c:url value="/ControlReservasController"/>">
@@ -101,14 +122,14 @@
                                                 <button style="width: 100%; margin-bottom: 8px;" type="submit" name="btnServicios" class="btn btn-success">Servicios extra</button>
                                                 
                                                 <!-- Button trigger modal -->
-                                                <button style="width: 100%;" type="button" data-toggle="modal" data-target="#exampleModal" class="btn btn-danger">Cancelar reserva</button>
+                                                <button style="width: 100%;" type="button" data-toggle="modal" data-target="#modal-${reserva.ID_RESERVA}" class="btn btn-danger">Cancelar reserva</button>
 
                                                 <!-- Modal -->
-                                                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="modal-${reserva.ID_RESERVA}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                   <div class="modal-dialog">
                                                     <div class="modal-content">
                                                       <div class="modal-header">
-                                                        <h5 class="modal-title" id="exampleModalLabel">Cancelar reserva</h5>
+                                                        <h5 class="modal-title" id="modal-${reserva.ID_RESERVA}">Cancelar reserva</h5>
                                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                           <span aria-hidden="true">&times;</span>
                                                         </button>
@@ -141,7 +162,8 @@
                             <th>ID</th>
                             <th>Check-in</th>
                             <th>Check-out</th>
-                            <th>Precio total</th>
+                            <th>Precio total</th>                            
+                            <th>Precio pagado</th>
                             <th>Opciones</th>
                         </thead>
                         <tbody>
@@ -159,8 +181,12 @@
                                         pattern="dd/MM/yyy"/>
                                     </td>
                                     <td>$${reserva.PRECIO_TOTAL}</td>
+                                    <td>$${reserva.TOTAL_PAGADO}</td>
                                     <td style="width: 200px;">
-                                        <button style="width: 100%; margin-bottom: 8px;" type="button" class="btn btn-success">Servicios extra</button>
+                                        <form method="POST" action="<c:url value="/ControlReservasController"/>">
+                                                <input type="hidden" value="${reserva.ID_RESERVA}" name="reserva_id"/>
+                                                <button style="width: 100%; margin-bottom: 8px;" type="submit" name="btnServicios" class="btn btn-success">Servicios extra</button>
+                                        </form>                                        
                                     </td>
                                 </tr>
                             </c:forEach>

@@ -24,5 +24,11 @@ public class UsuarioService {
         WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
         return port.crearUsuario(dni, nombre, apellidos, correoELECTRONICO, direccion, telefono, rolIDROL, extranjero, frecuente);
     }
+
+    public static Boolean existeUsuario(java.lang.String dni) {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.existeUsuario(dni);
+    }
     
 }

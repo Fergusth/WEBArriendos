@@ -1,6 +1,6 @@
 <%-- 
-    Document   : PagoReserva
-    Created on : may 27, 2020, 3:47:07 p.m.
+    Document   : DetalleReserva
+    Created on : may 30, 2020, 12:19:16 p.m.
     Author     : Gerald
 --%>
 
@@ -11,21 +11,23 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>Pagar reserva</title>
+        <title>Detalle reserva</title>
     </head>
-    <body style="text-align: center;">
-        <jsp:include page="../Navbar1.jsp"/>
+    <body>
+        <jsp:include page="Navbar1.jsp"/>
         <div class="breadcrumb-area bg-img bg-overlay jarallax" style="background-image: url(img/bg-img/16.jpg);">
             <div class="container h-100">
                 <div class="row h-100 align-items-center">
                     <div class="col-12">
                         <div class="breadcrumb-content text-center">
-                            <h2 class="page-title">Pago reserva</h2>
+                            <h2 class="page-title">Detalle reserva</h2>
                             <nav aria-label="breadcrumb">
                                 <ol class="breadcrumb justify-content-center">
                                     <li class="breadcrumb-item"><a href="<c:url value="/UsuarioController"/>">Inicio</a></li>
-                                    <li class="breadcrumb-item">Mis reservas</li>
-                                    <li class="breadcrumb-item">Pago reserva</li>
+                                    <li class="breadcrumb-item">Departamentos</li>
+                                    <li class="breadcrumb-item">Registro de acompañantes</li>
+                                    <li class="breadcrumb-item">Registro de servicios</li>
+                                    <li class="breadcrumb-item">Detalle reserva</li>
                                 </ol>
                             </nav>
                         </div>
@@ -35,26 +37,46 @@
         </div>
         <br><br><br>
         <div style="display: flex; justify-content: space-around;">
-            <div style="padding: 0 24px; margin-bottom: 120px;">
-                <h3>Pago de reserva</h3>
-                <div>
-                    <strong><label>ID de la reserva: </label></strong>
-                    <label><c:out value="${reserva.ID_RESERVA}"/></label>
-                </div>
-                <div>
-                    <strong><label>Check-in: </label></strong>
-                    <label><fmt:formatDate value="${reserva.FECHA_CHECKIN}" pattern="dd/MM/yyy"/></label>
-                </div>
-                <div>
-                    <strong><label>Check-out: </label></strong>
-                    <label><fmt:formatDate value="${reserva.FECHA_CHECKOUT}" pattern="dd/MM/yyy"/></label>
-                </div>
-                <br><br>
-                <h5>Total reserva: <c:out value="$${reserva.PRECIO_TOTAL}"/></h5>
-                <h5>Anticipo pagado: <c:out value="$${reserva.TOTAL_PAGADO}"/></h5>
-                <h5>Total a pagar: <c:out value="$${total_a_pagar}"/></h5>
-                <br><br>
-                <a class="btn btn-warning" href="${linkPago}">Pagar</a>
+            <div style="width: 45%; margin-left: 16px;">
+                <h3>Detalle de la reserva</h3>
+                <br>
+                <table class="table">
+                    <tbody>
+                        <tr>
+                            <td>Precio total departamentos:</td>
+                            <td><strong>$${TotalDepartamentos}</strong></td>
+                        </tr>
+                        <c:if test="${SExtras.size() > 0}">
+                            <tr>
+                                <td>Precio total servicios extra:</td>
+                                <td><strong>$${TotalSExtras}</strong></td>
+                            </tr>
+                        </c:if>
+                        <c:if test="${STours.size() > 0}">
+                            <tr>
+                                <td>Precio total servicios de tour:</td>
+                                <td><strong>$${TotalSTour}</strong></td>
+                            </tr>
+                        </c:if>
+                        <tr>
+                            <td>Precio total: </td>
+                            <td><strong>$${TotalReserva}</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Porcentaje anticipo a pagar: </td>
+                            <td><strong>${PorcentAnticipo}% Del total de los departamentos</strong></td>
+                        </tr>
+                        <tr>
+                            <td>Anticipo a pagar: </td>
+                            <td><strong>$${TotalAnticipo}</strong></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <form method="POST" action="<c:url value="/ReservaController"/>">
+                    <a class="btn btn-warning" href="${LinkPago}">Pagar</a>
+                    <input type="hidden" name="ReservaID" value="${ReservaID}"/>
+                    <button type="submit" name="CancelarRes" class="btn btn-danger" style="margin-right: 32px;">Cancelar</button>
+                </form>
             </div>
             <div style="width: 45%; margin-right: 16px;">
                 <h3>Departamento/s</h3>
@@ -136,7 +158,7 @@
                     </table>
                     <br><br>
                 </c:if>                
-            </div>      
-        </div>        
+            </div>            
+        </div>               
     </body>
 </html>

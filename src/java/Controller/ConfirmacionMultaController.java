@@ -7,6 +7,7 @@ package Controller;
 
 import DTO.MultaDTO;
 import DTO.UsuarioDTO;
+import Service.UsuarioService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -26,7 +27,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ConfirmacionMultaController", urlPatterns = {"/ConfirmacionMultaController"})
 public class ConfirmacionMultaController extends HttpServlet {
 
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -42,22 +42,27 @@ public class ConfirmacionMultaController extends HttpServlet {
         String parametro = request.getParameter("token");
         HttpSession Session = request.getSession(true);
         UsuarioDTO usudto = (UsuarioDTO) Session.getAttribute("cliente");
+        boolean existe = UsuarioService.existeUsuario(usudto.getDNI());
+        if (!existe) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
         MultaDTO multa = new MultaDTO();
         List<MultaDTO> bd_multas = multa.ListarMultasImpagasUsuario(usudto.getDNI());
         for (String id : parametro.split(";")) {
             for (MultaDTO bd_multa : bd_multas) {
-                if (Integer.parseInt(desencriptar(id)) == bd_multa.getID_MULTA()){
+                if (Integer.parseInt(desencriptar(id)) == bd_multa.getID_MULTA()) {
                     multa.pagarMulta(bd_multa.getID_MULTA(), bd_multa.getTOTAL_MULTA());
                 }
             }
         }
         request.getRequestDispatcher("JSP-Pages/Multas/PagoConfirmado.jsp").forward(request, response);
     }
-    
-    private static String desencriptar(String s) throws UnsupportedEncodingException{
+
+    private static String desencriptar(String s) throws UnsupportedEncodingException {
         byte[] decode = Base64.getDecoder().decode(s.getBytes());
         return new String(decode, "utf-8");
     }
+
     /**
      * Handles the HTTP <code>POST</code> method.
      *
@@ -72,11 +77,15 @@ public class ConfirmacionMultaController extends HttpServlet {
         String parametro = request.getParameter("token");
         HttpSession Session = request.getSession(true);
         UsuarioDTO usudto = (UsuarioDTO) Session.getAttribute("cliente");
+        boolean existe = UsuarioService.existeUsuario(usudto.getDNI());
+        if (!existe) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
         MultaDTO multa = new MultaDTO();
         List<MultaDTO> bd_multas = multa.ListarMultasImpagasUsuario(usudto.getDNI());
         for (String id : parametro.split(";")) {
             for (MultaDTO bd_multa : bd_multas) {
-                if (Integer.parseInt(desencriptar(id)) == bd_multa.getID_MULTA()){
+                if (Integer.parseInt(desencriptar(id)) == bd_multa.getID_MULTA()) {
                     multa.pagarMulta(bd_multa.getID_MULTA(), bd_multa.getTOTAL_MULTA());
                 }
             }

@@ -8,6 +8,7 @@ package Controller;
 import DTO.MultaDTO;
 import DTO.ReservaDTO;
 import DTO.UsuarioDTO;
+import Service.UsuarioService;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -27,8 +28,6 @@ import javax.servlet.http.HttpSession;
 @WebServlet(name = "ConfirmacionPagoReservaController", urlPatterns = {"/ConfirmacionPagoReservaController"})
 public class ConfirmacionPagoReservaController extends HttpServlet {
 
-    
-
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
      * Handles the HTTP <code>GET</code> method.
@@ -41,7 +40,7 @@ public class ConfirmacionPagoReservaController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        
+
     }
 
     /**
@@ -58,17 +57,22 @@ public class ConfirmacionPagoReservaController extends HttpServlet {
         String parametro = request.getParameter("token");
         HttpSession Session = request.getSession(true);
         UsuarioDTO usudto = (UsuarioDTO) Session.getAttribute("cliente");
+        boolean existe = UsuarioService.existeUsuario(usudto.getDNI());
+        if (!existe) {
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+        }
         int idReserva = Integer.parseInt(desencriptar(parametro));
         ReservaDTO reserva = new ReservaDTO();
         reserva.pagarReservaTotal(idReserva);
-        
+
         request.getRequestDispatcher("JSP-Pages/ControlReservas/PagoConfirmado.jsp").forward(request, response);
     }
-    
-    private static String desencriptar(String s) throws UnsupportedEncodingException{
+
+    private static String desencriptar(String s) throws UnsupportedEncodingException {
         byte[] decode = Base64.getDecoder().decode(s.getBytes());
         return new String(decode, "utf-8");
     }
+
     /**
      * Returns a short description of the servlet.
      *

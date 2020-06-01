@@ -168,6 +168,25 @@ public class ReservaDTO {
         return reservas;
     }
     
+    public ReservaDTO crearReserva(Date fecha_checkin, Date fecha_checkout, String usuario_dni, int precio_total, int total_pagado) throws DatatypeConfigurationException{
+        XMLGregorianCalendar Start = getXmlGregorianCalendarFromDate(fecha_checkin);
+        XMLGregorianCalendar End = getXmlGregorianCalendarFromDate(fecha_checkout);
+        Reserva bd_reserva = ReservaService.crearReserva(Start, End, "09:00", "22:00", usuario_dni, precio_total, total_pagado, "POR PAGAR", "Efectivo");
+        ReservaDTO reserva = new ReservaDTO();
+        reserva.setESTADO(bd_reserva.getESTADO().getValue());
+        reserva.setFECHA_CHECKIN(bd_reserva.getFECHACHECKIN().toGregorianCalendar().getTime());
+        reserva.setFECHA_CHECKOUT(bd_reserva.getFECHACHECKOUT().toGregorianCalendar().getTime());
+        reserva.setFORMA_PAGO(bd_reserva.getFORMAPAGO().getValue());
+        reserva.setHORA_CHECKIN(bd_reserva.getHORACHECKIN().getValue());
+        reserva.setHORA_CHECKOUT(bd_reserva.getHORACHECKOUT().getValue());
+        reserva.setID_RESERVA(bd_reserva.getIDRESERVA());
+        reserva.setPRECIO_TOTAL(bd_reserva.getPRECIOTOTAL());
+        reserva.setTOTAL_PAGADO(bd_reserva.getTOTALPAGADO());
+        reserva.setUSUARIO_DNI(bd_reserva.getUSUARIODNI().getValue());
+        
+        return reserva;
+    }
+    
     public boolean pagarReservaAnticipo(int id, int pago){
         return ReservaService.pagarReservaAnticipo(id, pago);
     }

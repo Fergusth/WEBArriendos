@@ -8,6 +8,7 @@ package Controller;
 import DTO.MultaDTO;
 import DTO.UsuarioDTO;
 import Service.PagoService;
+import Service.UsuarioService;
 import WS.FlowResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -35,6 +36,10 @@ public class MultaController extends HttpServlet {
         HttpSession Session = request.getSession(true);
         if (Session.getAttribute("cliente") != null){
             UsuarioDTO usudto = (UsuarioDTO) Session.getAttribute("cliente");
+            boolean existe = UsuarioService.existeUsuario(usudto.getDNI());
+            if (!existe) {
+                request.getRequestDispatcher("index.jsp").forward(request, response);
+            }
             MultaDTO multa = new MultaDTO();
             request.setAttribute("tieneMultasImpagas", multa.tieneMultaImpagas(usudto.getDNI()));
             request.setAttribute("tieneMultas", multa.tieneMulta(usudto.getDNI()));
@@ -64,6 +69,10 @@ public class MultaController extends HttpServlet {
             HttpSession Session = request.getSession(true);
             if (Session.getAttribute("cliente") != null){
                 UsuarioDTO usudto = (UsuarioDTO) Session.getAttribute("cliente");
+                boolean existe = UsuarioService.existeUsuario(usudto.getDNI());
+                if (!existe) {
+                    request.getRequestDispatcher("index.jsp").forward(request, response);
+                }
                 MultaDTO multa = new MultaDTO();
                 request.setAttribute("tieneMultasImpagas", multa.tieneMulta(usudto.getDNI()));
                 request.setAttribute("lstMultasImpagas", multa.ListarMultasImpagasUsuario(usudto.getDNI()));

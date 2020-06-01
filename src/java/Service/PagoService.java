@@ -18,5 +18,11 @@ public class PagoService {
         WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
         return port.generarLinkPago(precio, correo, urlRet);
     }
+
+    public static Integer getPorcentajeAnticipo() {
+        WS.ServicioTR service = new WS.ServicioTR();
+        WS.IServicioTR port = service.getBasicHttpBindingIServicioTR();
+        return port.getPorcentajeAnticipo();
+    }
     
 }

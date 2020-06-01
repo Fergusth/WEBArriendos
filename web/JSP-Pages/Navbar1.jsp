@@ -94,7 +94,7 @@
                             <!-- Nav Start -->
                             <div class="classynav">
                                 <ul id="nav">
-                                    <li class="active"><a href="Inicio.jsp">Inicio</a></li>
+                                    <li class="active"><a href="<c:url value="/UsuarioController"/>">Inicio</a></li>
                                     <li><a href="<c:url value="/ReservaController"/>">Reservar</a></li>
                                     <li><a href="<c:url value="/MultaController"/>">Multas</a></li>
                                     <li><a href="<c:url value="/ControlReservasController"/>">Mis reservas</a></li>
